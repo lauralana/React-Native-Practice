@@ -27,13 +27,17 @@ const HomeScreen = (props) => {
       onPress={() => props.navigation.navigate('Color')}
       title='Go to Color view'
        />
-         <Button 
+        <Button 
       onPress={() => props.navigation.navigate('Square')}
       title='Go to Square view'
        />
-          <Button 
+        <Button 
       onPress={() => props.navigation.navigate('Reducer')}
       title='Go to Square Reducer view'
+       />
+        <Button 
+      onPress={() => props.navigation.navigate('Box')}
+      title='Go to box screen view'
        />
     </View>
   )

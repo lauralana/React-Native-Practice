@@ -1,8 +1,9 @@
-import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { Text, StyleSheet, View, TextInput } from "react-native";
 
 export default function ComponentsScreen() {
-const name = 'Laura Lana';
+const [name, setName] = useState('');
+const [secret, setSecret] = useState('');
 
 return (
     <View > 
@@ -10,7 +11,23 @@ return (
             Components Screen View
         </Text>
         <Text style={styles.subHeader}> I solemnly swear that I am up to no good </Text>
-        <Text style={styles.footer}> ps: {name} </Text>
+        <TextInput 
+        style={styles.input}
+        autoCorrect={false}
+        placeholder="type your name"
+        value={name}
+        onChangeText={(newValue) => setName(newValue)}
+        />
+        <TextInput 
+        style={styles.input}
+        autoCorrect={false}
+        placeholder="your secret"
+        value={secret}
+        secureTextEntry={true}
+        onChangeText={(newValue) => setSecret(newValue)}
+        />
+        {secret.length < 5 ? <Text>Secret need at least 5 characters</Text> : null}
+        <Text style={styles.text}> My name is: {name}</Text>
     </View>
 )
 };
@@ -26,9 +43,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         color: 'red'
     },
-    footer: {
+    input: {
+        margin: 15,
+        borderColor: 'black',
+        borderWidth: 1,
+    },
+    text: {
         fontSize: 15,
-        marginVertical: 290,
-        marginHorizontal: 150,
+        marginVertical: 20,
+        marginHorizontal: 100
     }
 });
